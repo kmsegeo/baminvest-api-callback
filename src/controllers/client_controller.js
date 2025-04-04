@@ -1,5 +1,9 @@
 const response = require("../middlewares/response");
 
-module.exports = {
+const activeOnbording = async (req, res, next) => {
+    
+}
 
+module.exports = {
+    activeOnbording
 }

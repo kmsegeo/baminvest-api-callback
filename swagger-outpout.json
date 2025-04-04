@@ -1,0 +1,35 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "BAM API Client",
+    "version": "1.0.0",
+    "description": "Api de l'application de fonds commun de placement de Bridge Asset Management"
+  },
+  "host": "verolive-secure.com/apibam",
+  "basePath": "/",
+  "schemes": [
+    "https"
+  ],
+  "paths": {
+    "/v1/acteurs/onbording/{calback?ref=ref}": {
+      "put": {
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/v1/acteurs/operations/{calback?ref=ref}": {
+      "put": {
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    }
+  }
+}

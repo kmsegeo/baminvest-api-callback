@@ -1,5 +1,5 @@
 const db = require('../config/database');
-const TypeOperation = require('../models/TypeOperation');
+// const TypeOperation = require('../models/TypeOperation');
 
 const Utils = {
     
@@ -36,15 +36,15 @@ const Utils = {
         }
     },
 
-    async selectTypeOperation(operation) {
-        const data = ['Souscription', 'Rachat', 'Transfert'];
-        for (let i = 0; i < data.length; i++) {
-            const d = data[i];
-            if (operation.toLowerCase()==d.toLowerCase())
-                return await TypeOperation.findCodeByIntitule(d);
-        }
-        return operation;
-    },
+    // async selectTypeOperation(operation) {
+    //     const data = ['Souscription', 'Rachat', 'Transfert'];
+    //     for (let i = 0; i < data.length; i++) {
+    //         const d = data[i];
+    //         if (operation.toLowerCase()==d.toLowerCase())
+    //             return await TypeOperation.findCodeByIntitule(d);
+    //     }
+    //     return operation;
+    // },
 
     async calculProflInvestisseur(point_total) {
 

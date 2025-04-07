@@ -4,7 +4,7 @@ const operationController = require('../controllers/operation_controller');
 
 const router = express.Router();
 
-router.put('/onbording/calback', clientController.activeOnbording);
-router.put('/operations/calback', operationController.activeOperation);
+router.put('/onbording/callback', clientController.activeOnbording);
+router.put('/operations/callback', operationController.activeOperation);
 
 module.exports = router;

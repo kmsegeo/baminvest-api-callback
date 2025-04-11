@@ -29,6 +29,9 @@
                 "idClient": {
                   "example": "any"
                 },
+                "numeroCompteEspece": {
+                  "example": "any"
+                },
                 "numeroCompteTitre": {
                   "example": "any"
                 }

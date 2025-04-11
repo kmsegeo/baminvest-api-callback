@@ -1,9 +1,9 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "BAM API Client",
+    "title": "BAM API Callback",
     "version": "1.0.0",
-    "description": "Api de l'application de fonds commun de placement de Bridge Asset Management"
+    "description": "Api callback de l'application de fonds commun de placement de Bridge Asset Management"
   },
   "host": "verolive-secure.com/apibam",
   "basePath": "/",
@@ -11,9 +11,31 @@
     "https"
   ],
   "paths": {
-    "/v1/acteurs/onbording/{calback?ref=ref}": {
+    "/v1/acteurs/onbording/callback": {
       "put": {
         "description": "",
+        "parameters": [
+          {
+            "name": "ref",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "idClient": {
+                  "example": "any"
+                },
+                "numeroCompteTitre": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
         "responses": {
           "default": {
             "description": ""
@@ -21,9 +43,31 @@
         }
       }
     },
-    "/v1/acteurs/operations/{calback?ref=ref}": {
+    "/v1/acteurs/operations/callback": {
       "put": {
         "description": "",
+        "parameters": [
+          {
+            "name": "ref",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "idClient": {
+                  "example": "any"
+                },
+                "idOperationClient": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
         "responses": {
           "default": {
             "description": ""

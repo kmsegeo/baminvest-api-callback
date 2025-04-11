@@ -63,7 +63,7 @@ const Acteur = {
   },
   
   async activeCompteByEmail(email) {
-    const queryString = `UPDATE ${this.tableName} SET r_statut=$1, r_date_activation=$2 WHERE r_i=$3 RETURNING r_i,
+    const queryString = `UPDATE ${this.tableName} SET r_statut=$1, r_date_activation=$2 WHERE r_email=$3 RETURNING r_i,
         r_nom_complet, 
         r_email, 
         r_telephone_prp, 

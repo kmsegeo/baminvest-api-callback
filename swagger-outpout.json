@@ -12,7 +12,7 @@
   ],
   "paths": {
     "/v1/acteurs/onbording/callback": {
-      "put": {
+      "post": {
         "description": "",
         "parameters": [
           {
@@ -50,7 +50,7 @@
       }
     },
     "/v1/acteurs/operations/callback": {
-      "put": {
+      "post": {
         "description": "",
         "parameters": [
           {

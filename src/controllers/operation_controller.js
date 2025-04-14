@@ -6,7 +6,7 @@ const activeOperation = async (req, res, next) => {
     console.log(`Operation activation callback..`);
 
     const ref = req.query.ref
-    const {idClient, idOperationClient} = req.body
+    const {idClient, idOperationClient, status} = req.body
 
     console.log(`client ref:`, ref)
 

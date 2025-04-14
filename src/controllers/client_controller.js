@@ -8,7 +8,7 @@ const activeOnbording = async (req, res, next) => {
     console.log(`Onbording activation callback..`)
 
     const ref = req.query.ref
-    const {idClient, numeroCompteEspece, numeroCompteTitre} = req.body
+    const {idClient, numeroCompteEspece, numeroCompteTitre, status} = req.body
     
     Utils.expectedParameters({idClient, numeroCompteEspece, numeroCompteTitre}).then( async () => {
 

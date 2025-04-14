@@ -5,7 +5,7 @@
     "version": "1.0.0",
     "description": "Api callback de l'application de fonds commun de placement de Bridge Asset Management"
   },
-  "host": "verolive-secure.com/apibam",
+  "host": "bam.mediasoftci.net/api/bamcallbk",
   "basePath": "/",
   "schemes": [
     "https"
@@ -33,6 +33,9 @@
                   "example": "any"
                 },
                 "numeroCompteTitre": {
+                  "example": "any"
+                },
+                "status": {
                   "example": "any"
                 }
               }
@@ -65,6 +68,9 @@
                   "example": "any"
                 },
                 "idOperationClient": {
+                  "example": "any"
+                },
+                "status": {
                   "example": "any"
                 }
               }

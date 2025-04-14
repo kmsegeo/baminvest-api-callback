@@ -6,7 +6,7 @@ const doc = {
         version: process.env.VERSION,
         description: `Api callback de l'application de fonds commun de placement de Bridge Asset Management`,
     },
-    host: 'verolive-secure.com/apibam',
+    host: 'bam.mediasoftci.net/api/bamcallbk',
     schemes: ['https']
 };
 

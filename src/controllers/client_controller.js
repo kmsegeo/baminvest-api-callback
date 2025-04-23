@@ -19,7 +19,7 @@ const activeOnbording = async (req, res, next) => {
 
         await Acteur.findByEmail(ref).then(async acteur => {
             if (!acteur) return response(res, 404, `Acteur non trouvé !`);
-            await Particulier.updateCompteTitre(acteur.e_particulier, numeroCompteTitre).then(async particulier => {
+            await Particulier.setAtsgoIdClient(acteur.e_particulier, numeroCompteTitre).then(async particulier => {
                 if (!particulier) return response(res, 400, `Erreur à l'enregistrement du compte titre !`);
 
                 await Utils.genearteOTP_Msgid().then(async msgid => {

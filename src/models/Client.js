@@ -10,9 +10,9 @@ const Particulier = {
         return res.rows[0];
     },
 
-    async setAtsgoIdClient(particulier_id, atsgo_id_client) {
-        const query_string = `UPDATE ${this.table_name} SET r_atsgo_id_client=$1 WHERE r_i=$2 RETURNING *`;
-        const res = await db.query(query_string, [atsgo_id_client, particulier_id]);
+    async setAtsgoClientData(particulier_id, numeroCompteTitre, numeroCompteEspece) {
+        const query_string = `UPDATE ${this.table_name} SET r_ncompte_titre=$1, r_ncompte_espece=$2 WHERE r_i=$3 RETURNING *`;
+        const res = await db.query(query_string, [numeroCompteTitre, numeroCompteEspece, particulier_id]);
         return res.rows[0];
     },
 

@@ -11,7 +11,7 @@ const activeOnbording = async (req, res, next) => {
     const ref = req.query.ref
     const {idClient, numeroCompteEspece, numeroCompteTitre, status} = req.body
     
-    Utils.expectedParameters({idClient, numeroCompteEspece, numeroCompteTitre}).then( async () => {
+    Utils.expectedParameters({idClient, numeroCompteEspece, numeroCompteTitre, status}).then( async () => {
 
         console.log(`Activation du client :`, idClient);
         console.log(`Reférence client :`, ref);
@@ -19,7 +19,7 @@ const activeOnbording = async (req, res, next) => {
 
         await Acteur.findByEmail(ref).then(async acteur => {
             if (!acteur) return response(res, 404, `Acteur non trouvé !`);
-            await Particulier.setAtsgoIdClient(acteur.e_particulier, numeroCompteTitre).then(async particulier => {
+            await Particulier.setAtsgoClientData(acteur.e_particulier, idClient, numeroCompteTitre, numeroCompteEspece).then(async particulier => {
                 if (!particulier) return response(res, 400, `Erreur à l'enregistrement du compte titre !`);
 
                 await Utils.genearteOTP_Msgid().then(async msgid => {

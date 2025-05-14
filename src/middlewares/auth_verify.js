@@ -1,4 +1,3 @@
-const Session = require('../models/Session')
 const response = require("./response");
 const jwt = require('jsonwebtoken');
 
@@ -24,14 +23,10 @@ module.exports = async (req, res, next) => {
             throw error;
         } 
         
-        console.log(`Vérification de session`)
-        await Session.findByRef(decodedToken.session).then(session => {
-            if (!session) throw `Erreur de session !`;
-            if (session.r_statut==0) throw `Session inactive, connexion requise !`;
-            req.session = session;
-            next();
-        }).catch(error => response(res, 401, error));
-        
+        console.log(`Vérification callback user..`)
+        console.log('user:', decodedToken.username)
+        next();
+                
     } catch (error) {
         return response(res, 401, error);
     }

@@ -6,6 +6,7 @@ require('dotenv').config();
 const swaggerUI = require('swagger-ui-express');
 const swaggerDocument = require('./swagger-outpout.json');
 
+const authRoutes = require('./src/routes/auth_routes');
 const acteurRoutes = require('./src/routes/acteur_routes');
 
 const app = express(); 
@@ -17,6 +18,7 @@ app.use(express.json());
 
 const base_path = '/v1'; 
 
+app.use(base_path + '/auth', authRoutes)
 app.use(base_path + '/acteurs', acteurRoutes); 
 
 app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDocument)); 

@@ -9,17 +9,17 @@ const activeOnbording = async (req, res, next) => {
     console.log(`Onbording activation callback..`)
 
     const ref = req.query.ref
-    const {idClient, numeroCompteEspece, numeroCompteTitre, status} = req.body
+    const {IdClient, NumeroCompteEspece, NumeroCompteTitre, Status, Email, Tel} = req.body
     
-    Utils.expectedParameters({idClient, numeroCompteEspece, numeroCompteTitre, status}).then( async () => {
+    Utils.expectedParameters({IdClient, NumeroCompteEspece, NumeroCompteTitre, Status}).then( async () => {
 
-        console.log(`Activation du client :`, idClient);
+        console.log(`Activation du client :`, IdClient);
         console.log(`Reférence client :`, ref);
-        console.log(`Compte titre :`, numeroCompteTitre);
+        console.log(`Compte titre :`, NumeroCompteTitre);
 
         await Acteur.findByEmail(ref).then(async acteur => {
             if (!acteur) return response(res, 404, `Acteur non trouvé !`);
-            await Particulier.setAtsgoClientData(acteur.e_particulier, idClient, numeroCompteTitre, numeroCompteEspece).then(async particulier => {
+            await Particulier.setAtsgoClientData(acteur.e_particulier, IdClient, NumeroCompteTitre, NumeroCompteEspece).then(async particulier => {
                 if (!particulier) return response(res, 400, `Erreur à l'enregistrement du compte titre !`);
 
                 await Utils.genearteOTP_Msgid().then(async msgid => {
@@ -36,7 +36,7 @@ const activeOnbording = async (req, res, next) => {
                                 fromad: process.env.ML_SMSCI_CLT,
                                 toad: acteur.r_telephone_prp,
                                 msgid: msgid,
-                                text: `Votre compte client: ${idClient}, à été validé. \nN° compte titre: ${numeroCompteTitre}, \nN° compte espèce: ${numeroCompteEspece}.`
+                                text: `Votre compte client: ${IdClient}, à été validé. \nN° compte titre: ${NumeroCompteTitre}, \nN° compte espèce: ${NumeroCompteEspece}.`
                             })
                         })
                         .then(res => res.json())

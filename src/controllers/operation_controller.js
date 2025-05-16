@@ -8,14 +8,14 @@ const activeMouvement = async (req, res, next) => {
     console.log(`Mouvement validation callback..`);
 
     const ref = req.query.ref
-    const {idClient, idMouvement, status} = req.body
+    const {IdClient, IdMouvement, Status, IdFcp, LibelleFcp, TypeMouvement, Montant, MontantDebit, MontantCredit, DateMouvement, DateValeur, Email, Tel, NumeroCompteEspece, NumeroCompteTitre} = req.body
 
     console.log(`client ref:`, ref);
 
-    Utils.expectedParameters({idClient, idMouvement}).then( async () => {
+    Utils.expectedParameters({IdClient, IdMouvement, Status}).then( async () => {
         
-        console.log(`Validation du mouvement `, idMouvement);
-        console.log(`Mouvement du client`, idClient);
+        console.log(`Validation du mouvement `, IdMouvement);
+        console.log(`Mouvement du client`, IdClient);
 
         await Acteur.findByEmail(ref).then(async acteur => {
             if (!acteur) return response(res, 404, `Acteur non trouvé !`);
@@ -34,7 +34,7 @@ const activeMouvement = async (req, res, next) => {
                             fromad: process.env.ML_SMSCI_CLT,
                             toad: acteur.r_telephone_prp,
                             msgid: msgid,
-                            text: `Votre dépôt portant l'identifiant: ${idMouvement}, à bien été pris en compte.`
+                            text: `Votre dépôt portant l'identifiant: ${IdMouvement}, à bien été pris en compte.`
                         })
                     })
                     .then(res => res.json())
@@ -56,14 +56,14 @@ const activeOperation = async (req, res, next) => {
     console.log(`Operation validation callback..`);
 
     const ref = req.query.ref
-    const {idClient, idOperationClient, status} = req.body
+    const {IdClient, IdOperationClient, Status, NumeroCompteEspece, NumeroCompteTitre, IdFcp, LibelleFcp, Email, NombreDePart, ValeurLiquidative, MontantNet, Tel, TypeOperation, MontantTotal} = req.body
 
     console.log(`client ref:`, ref);
 
-    Utils.expectedParameters({idClient, idOperationClient}).then( async () => {
+    Utils.expectedParameters({IdClient, IdOperationClient, Status}).then( async () => {
         
-        console.log(`Validation de l'operation `, idOperationClient);
-        console.log(`Operation du client`, idClient);
+        console.log(`Validation de l'operation `, IdOperationClient);
+        console.log(`Operation du client`, IdClient);
 
         await Acteur.findByEmail(ref).then(async acteur => {
             if (!acteur) return response(res, 404, `Acteur non trouvé !`);
@@ -82,7 +82,7 @@ const activeOperation = async (req, res, next) => {
                             fromad: process.env.ML_SMSCI_CLT,
                             toad: acteur.r_telephone_prp,
                             msgid: msgid,
-                            text: `Votre opération portant l'identifiant: ${idOperationClient}, à été traité avec succès.`
+                            text: `Votre opération portant l'identifiant: ${IdOperationClient}, à été traité avec succès.`
                         })
                     })
                     .then(res => res.json())

@@ -8,16 +8,16 @@ const activeOnbording = async (req, res, next) => {
     
     console.log(`Onbording activation callback..`)
 
-    const ref = req.query.ref
+    // const ref = req.query.ref
     const {IdClient, NumeroCompteEspece, NumeroCompteTitre, Status, Email, Tel} = req.body
     
     Utils.expectedParameters({IdClient, NumeroCompteEspece, NumeroCompteTitre, Status}).then( async () => {
 
         console.log(`Activation du client :`, IdClient);
-        console.log(`Reférence client :`, ref);
+        console.log(`Reférence client :`, Email);
         console.log(`Compte titre :`, NumeroCompteTitre);
 
-        await Acteur.findByEmail(ref).then(async acteur => {
+        await Acteur.findByEmail(Email).then(async acteur => {
             if (!acteur) return response(res, 404, `Acteur non trouvé !`);
             await Particulier.setAtsgoClientData(acteur.e_particulier, IdClient, NumeroCompteTitre, NumeroCompteEspece).then(async particulier => {
                 if (!particulier) return response(res, 400, `Erreur à l'enregistrement du compte titre !`);

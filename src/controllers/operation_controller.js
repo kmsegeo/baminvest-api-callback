@@ -7,17 +7,17 @@ const activeMouvement = async (req, res, next) => {
 
     console.log(`Mouvement validation callback..`);
 
-    const ref = req.query.ref
+    // const ref = req.query.ref
     const {IdClient, IdMouvement, Status, IdFcp, LibelleFcp, TypeMouvement, Montant, MontantDebit, MontantCredit, DateMouvement, DateValeur, Email, Tel, NumeroCompteEspece, NumeroCompteTitre} = req.body
 
-    console.log(`client ref:`, ref);
+    console.log(`client ref:`, Email);
 
     Utils.expectedParameters({IdClient, IdMouvement, Status}).then( async () => {
         
         console.log(`Validation du mouvement `, IdMouvement);
         console.log(`Mouvement du client`, IdClient);
 
-        await Acteur.findByEmail(ref).then(async acteur => {
+        await Acteur.findByEmail(Email).then(async acteur => {
             if (!acteur) return response(res, 404, `Acteur non trouvé !`);
 
             await Utils.genearteOTP_Msgid().then(async msgid => {
@@ -55,17 +55,17 @@ const activeOperation = async (req, res, next) => {
         
     console.log(`Operation validation callback..`);
 
-    const ref = req.query.ref
+    // const ref = req.query.ref
     const {IdClient, IdOperationClient, Status, NumeroCompteEspece, NumeroCompteTitre, IdFcp, LibelleFcp, Email, NombreDePart, ValeurLiquidative, MontantNet, Tel, TypeOperation, MontantTotal} = req.body
 
-    console.log(`client ref:`, ref);
+    console.log(`client ref:`, Email);
 
     Utils.expectedParameters({IdClient, IdOperationClient, Status}).then( async () => {
         
         console.log(`Validation de l'operation `, IdOperationClient);
         console.log(`Operation du client`, IdClient);
 
-        await Acteur.findByEmail(ref).then(async acteur => {
+        await Acteur.findByEmail(Email).then(async acteur => {
             if (!acteur) return response(res, 404, `Acteur non trouvé !`);
             
             await Utils.genearteOTP_Msgid().then(async msgid => {

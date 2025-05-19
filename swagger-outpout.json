@@ -11,10 +11,42 @@
     "https"
   ],
   "paths": {
+    "/v1/auth/login": {
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "username": {
+                  "example": "any"
+                },
+                "password": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
     "/v1/acteurs/onbording/callback": {
       "post": {
         "description": "",
         "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          },
           {
             "name": "ref",
             "in": "query",
@@ -26,16 +58,22 @@
             "schema": {
               "type": "object",
               "properties": {
-                "idClient": {
+                "IdClient": {
                   "example": "any"
                 },
-                "numeroCompteEspece": {
+                "NumeroCompteEspece": {
                   "example": "any"
                 },
-                "numeroCompteTitre": {
+                "NumeroCompteTitre": {
                   "example": "any"
                 },
-                "status": {
+                "Status": {
+                  "example": "any"
+                },
+                "Email": {
+                  "example": "any"
+                },
+                "Tel": {
                   "example": "any"
                 }
               }
@@ -54,6 +92,11 @@
         "description": "",
         "parameters": [
           {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          },
+          {
             "name": "ref",
             "in": "query",
             "type": "string"
@@ -64,13 +107,49 @@
             "schema": {
               "type": "object",
               "properties": {
-                "idClient": {
+                "IdClient": {
                   "example": "any"
                 },
-                "idMouvement": {
+                "IdMouvement": {
                   "example": "any"
                 },
-                "status": {
+                "Status": {
+                  "example": "any"
+                },
+                "IdFcp": {
+                  "example": "any"
+                },
+                "LibelleFcp": {
+                  "example": "any"
+                },
+                "TypeMouvement": {
+                  "example": "any"
+                },
+                "Montant": {
+                  "example": "any"
+                },
+                "MontantDebit": {
+                  "example": "any"
+                },
+                "MontantCredit": {
+                  "example": "any"
+                },
+                "DateMouvement": {
+                  "example": "any"
+                },
+                "DateValeur": {
+                  "example": "any"
+                },
+                "Email": {
+                  "example": "any"
+                },
+                "Tel": {
+                  "example": "any"
+                },
+                "NumeroCompteEspece": {
+                  "example": "any"
+                },
+                "NumeroCompteTitre": {
                   "example": "any"
                 }
               }
@@ -89,6 +168,11 @@
         "description": "",
         "parameters": [
           {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          },
+          {
             "name": "ref",
             "in": "query",
             "type": "string"
@@ -99,13 +183,46 @@
             "schema": {
               "type": "object",
               "properties": {
-                "idClient": {
+                "IdClient": {
                   "example": "any"
                 },
-                "idOperationClient": {
+                "IdOperationClient": {
                   "example": "any"
                 },
-                "status": {
+                "Status": {
+                  "example": "any"
+                },
+                "NumeroCompteEspece": {
+                  "example": "any"
+                },
+                "NumeroCompteTitre": {
+                  "example": "any"
+                },
+                "IdFcp": {
+                  "example": "any"
+                },
+                "LibelleFcp": {
+                  "example": "any"
+                },
+                "Email": {
+                  "example": "any"
+                },
+                "NombreDePart": {
+                  "example": "any"
+                },
+                "ValeurLiquidative": {
+                  "example": "any"
+                },
+                "MontantNet": {
+                  "example": "any"
+                },
+                "Tel": {
+                  "example": "any"
+                },
+                "TypeOperation": {
+                  "example": "any"
+                },
+                "MontantTotal": {
                   "example": "any"
                 }
               }
